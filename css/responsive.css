@@ -1,0 +1,365 @@
+@media screen and (max-width: 1200px) {
+  .mega-menu-body .mega-menu-domain-tab {
+    -ms-flex: 0 0 30%;
+    flex: 0 0 30%;
+    max-width: 30%;
+  }
+
+  .mega-menu-body .mega-menu-domain-tab-contemt {
+    -ms-flex: 0 0 70%;
+    flex: 0 0 70%;
+    max-width: 70%;
+  }
+
+  .mega-menu-body .mega-menu-quick-links {
+    display: none;
+  }
+
+  .fee-structure {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  .fee-structure-items {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+    text-align: center;
+    margin-bottom: 40px;
+    padding-right: 0;
+  }
+  .fee-structure .fee-structure-items:last-child {
+    margin-bottom: 0;
+  }
+  .on-campus-fee:before {
+    width: 50px;
+    height: 1px;
+    left: calc(50% - 25px);
+    top: -20px;
+  }
+  .on-campus-fee:after {
+    top: -28px;
+    left: calc(50% - 14px);
+    padding: 0 6px;
+  }
+}
+
+
+@media screen and (min-width: 992px) {
+  .pg-prograne-finance-partner-img-wrap span:last-child {
+    margin-bottom: 0;
+  }
+}
+@media screen and (max-width: 991px) {
+  .pg-fee-section {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  .pg-programe-total-fee-wrap,
+  .pg-programe-total-last-fee-wrap {
+    width: 100%;
+  }
+  .pg-fee-wrapper {
+    padding-top: 20px;
+  }
+  .pg-programe-total-fee-wrap {
+    padding: 15px 40px;
+    text-align: center;
+  }
+  .fee-border-top-green {
+    border: none;
+    padding: 20px 35px;
+  }
+  .pg-fee-wrapper {
+    text-align: center;
+  }
+  .pg-prograne-finance-partner {
+    margin-top: 15px;
+  }
+
+  .mega-menu-cat-courses-wrap {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+
+  .mega-menu-cat-courses-logo {
+    width: auto;
+    margin-right: 0px;
+  }
+}
+
+
+
+@media screen and (max-width: 767px) {
+  .main-header-wrapper > span.browse-wrapper,
+  .mega-menu-wrapper {
+    display: none;
+  }
+
+  .mega-menu-coutse-title {
+    font-size: 14px;
+  }
+
+  .mega-menu-free-course-heading {
+    margin-bottom: 10px;
+  }
+
+  .first-sec-form {
+    display: none;
+  }
+  .sec {
+    padding: 50px 0;
+  }
+  p {
+    font-size: 14px;
+  }
+  .btn {
+    width: 100%;
+  }
+  .second-sec div .top {
+    display: flex;
+    justify-content: center;
+  }
+  .second-sec div div .top-card {
+    width: 100%;
+    padding: 0 50px;
+  }
+  .second-sec div div .top-card .card-body {
+    border-bottom: 1px solid #8b8989;
+  }
+  .second-sec div div .top-card .card-body:last-child {
+    border-bottom: none;
+  }
+  .navbar.navbar-template {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+  }
+  .career-transition-card-container {
+    margin-top: 50px;
+  }
+  .career-transition-card {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  .career-transition-card img {
+    width: 30px;
+  }
+  .career-transition-card span {
+    font-size: 18px;
+  }
+  .lady-img-first-bg {
+    margin-top: 50px;
+  }
+  .start-application-card {
+    display: none;
+  }
+  .nav_bar .nav_tab div {
+    margin: 0px 10px;
+  }
+  .peer-card {
+    padding: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0px 2px 13px rgba(0, 0, 0, 0.25);
+  }
+  .peer-card img {
+    width: 30px;
+  }
+  .peer-card p {
+    font-size: 20px;
+  }
+  .admission-procedure-card {
+    margin-bottom: 30px;
+  }
+  .admission-procedure-card-img {
+    margin-bottom: 10px;
+  }
+  .admission-procedure-card-img img {
+    width: 50px;
+  }
+  .admission-procedure-card .heading {
+    font-size: 15px;
+  }
+  .admission-procedure-card .sub-heading {
+    font-size: 12px;
+  }
+  .project-card {
+    margin-bottom: 40px;
+  }
+  .review-card {
+    margin-bottom: 40px;
+  }
+  /* .first-sec {
+    height: 570px;
+  } */
+  .first-sec {
+    height: 84vh;
+}
+  .azure-first-sec {
+    height: 500px;
+  }
+  .nav-sm {
+    position: absolute;
+    overflow: hidden;
+    flex-direction: column;
+    padding: 0 0;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100vh;
+    background-color: #fff;
+    z-index: 999999999999999999999999;
+    transition: linear 0.15s;
+  }
+  .nav-sm.show {
+    width: 280px;
+    padding: 100px 20px;
+  }
+  .search {
+    width: 200px;
+    height: 30px;
+    border-radius: 15px;
+  }
+  .menu-close {
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #000;
+  }
+  .swiper {
+    width: 100%;
+    height: max-content;
+    /* width: 275px;
+    height: 420px; */
+  }
+  .career-transition-lt-card {
+    width: 300px;
+  }
+  .review-slider {
+    height: 400px !important;
+    padding: 0px 0px;
+  }
+  .fa-chevron-right {
+    right: -7px;
+  }
+  .fa-chevron-left {
+    left: -7px;
+  }
+  .peer-learning-body .ebook-heading {
+    font-size: 2.7rem;
+    line-height: 3.2rem;
+  }
+  .star-container img {
+    width: 30px;
+    height: 30px;
+  }
+  .peer-learning-body p {
+    font-size: 15px;
+    margin-bottom: 0;
+  }
+  .foot-video iframe {
+    width: 300px;
+    height: 175px;
+  }
+  .footer {
+    min-height: fit-content;
+  }
+  .ebook-btn {
+    width: 100%;
+  }
+
+  #master-faq-section {
+    padding: 45px 0;
+  }
+  #master-faq-section h2 {
+    font-size: 22px;
+    line-height: 30px;
+    margin-bottom: 20px;
+  }
+  #master-faq-accordion .card-header {
+    font-size: 14px;
+  }
+  #master-faq-accordion .card .card-body {
+    padding: 10px 30px;
+  }
+  #master-faq-accordion .card .card-body p,
+  #master-faq-accordion .card .card-body ul {
+    line-height: 26px;
+  }
+
+  #pg-programe-fee-section {
+    padding: 45px 0;
+  }
+  #pg-programe-fee-section h2 {
+    /* margin-bottom: 20px;
+    font-size: 22px;
+    line-height: 30px; */
+    margin-bottom: 30px;
+    font-size: 30px;
+    line-height: unset;
+  }
+  .pg-programe-total-fee-wrap {
+    padding: 20px 40px 5px;
+    min-width: 100%;
+  }
+  .pg-programe-fee-heading {
+    font-size: 16px;
+    line-height: 22px;
+  }
+  .pg-programe-fee-price {
+    font-size: 28px;
+    line-height: 38px;
+    margin-bottom: 0;
+  }
+  .pg-programe-fee-description {
+    font-size: 16px;
+    text-align: center;
+    line-height: 26px;
+  }
+  .pg-programe-fee-description-small {
+    font-size: 16px;
+  }
+  .fee-border-top-green {
+    min-height: auto;
+    padding: 0 50px;
+  }
+  .emi-partner-wrap {
+    padding: 0 50px;
+    text-align: center;
+  }
+  .pg-upcoming-deadline {
+    padding: 30px 40px;
+  }
+  .pg-upcoming-deadline h3 {
+    display: block;
+    text-align: center;
+    font-size: 16px;
+    line-height: 26px;
+  }
+  .pg-upcoming-deadline h3 span {
+    display: block;
+    margin-top: 8px;
+    font-size: 24px;
+    line-height: 33px;
+  }
+  .pg-upcoming-deadline p {
+    text-align: center;
+  }
+}
+@media screen and (max-width: 575px) {
+  .pg-prograne-finance-partner {
+    margin-top: 15px;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+  .pg-prograne-finance-partner-heading {
+    display: block;
+    width: 100%;
+    font-size: 18px;
+  }
+
+  .project-card {
+    width: 90%;
+  }
+
+}
