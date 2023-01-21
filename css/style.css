@@ -48,7 +48,8 @@ a.nav-link {
 }
 
 .career-transition-lt-card {
-  width: 360px;
+  /* width: 360px; */
+  width: 291px;
   height: 400px;
   padding: 15px;
   background: #fff;
@@ -58,6 +59,7 @@ a.nav-link {
 .career-transition-lt-card div .slider_img {
   width: 50px;
   height: 50px;
+  border-radius: 50% ;
 }
 .stars img {
   width: 25px;
@@ -437,14 +439,14 @@ a.nav-link {
     background: #ffffff;
     color: #fff;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
+    border-radius: 5px;
     position: sticky;
     top: 110px;
   }
   .career-counselling-card .card-head {
     padding: 30px;
     background: #19de74;
-    border-radius: 20px 20px 0px 0px;
+    border-radius: 5px 5px 0px 0px;
   }
   .career-counselling-card .card-head .sub-heading {
     font-size: 16px;
@@ -455,7 +457,7 @@ a.nav-link {
     padding: 30px;
     color: #000;
     margin-bottom: 30px;
-    border-radius: 0px 0px 20px 20px;
+    border-radius: 0px 0px 5px 5px;
   }
   .career-counselling-card .card-body input {
     background: #f3f3f3;
@@ -466,21 +468,22 @@ a.nav-link {
   }
 
   .career-transition-card {
+    border: 1px solid #e5e5e5;
     background: #fafafa;
     border-radius: 20px;
-    max-width: 500px;
-    padding: 25px;
+    max-width: 337px;
+    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 30px;
-  }
+}
   .career-transition-card img {
     width: 40px;
     margin-right: 20px;
   }
   .career-transition-card span {
-    font-size: 25px;
+    font-size: 15px;
   }
   .career-transition-card:nth-child(even) {
     margin-left: auto;
@@ -489,7 +492,9 @@ a.nav-link {
     background: #2c75e4;
     position: relative;
     height: 400px;
+    overflow: hidden;
   }
+
   .lady-img-second-bg {
     background: #55ec9b;
     max-width: 300px;
@@ -500,12 +505,18 @@ a.nav-link {
     right: 40px;
     bottom: 50px;
   }
-  .lady-img {
+  /* .lady-img {
     position: absolute;
     top: -58px;
     right: 0;
     width: 390px;
-  }
+  } */
+  .lady-img {
+    position: absolute;
+    top: -24px;
+    right: -124px;
+    width: 687px;
+}
   .mentor-card {
     width: 300px;
     padding-top: 40px;
@@ -893,6 +904,7 @@ a.nav-link {
   .project-card .details {
     text-align: center;
     font-size: 14px;
+    min-height: 126px;
   }
 
   .video-container {
@@ -915,14 +927,14 @@ a.nav-link {
   }
 
   .review-card .row .review-card-img img {
-    width: 60px;
+    width: 40px;
   }
   .review-card .row div {
     font-size: 20px;
     margin: 20px 0;
   }
   .review-card .row div .heading {
-    font-size: 22px;
+    font-size: 16px;
   }
   .review-card .row div .sub-heading {
     font-size: 18px;
@@ -981,6 +993,7 @@ a.nav-link {
   .alumni-img-container .row .col-6 img {
     max-height: 70px;
     background-color: rgb(212, 212, 212);
+    width: 100px;
   }
   .alumni-img-container .row .col-6 {
     display: flex;
@@ -993,10 +1006,14 @@ a.nav-link {
     color: #6a6a6a;
   }
   .peer-learning-body .ebook-heading {
-    font-size: 5rem;
+    /* font-size: 5rem;
     line-height: 5.5rem;
+    font-weight: 700; */
+    font-size: 4rem;
+    line-height: 4.5rem;
     font-weight: 700;
   }
+
   .star-container img {
     width: 50px;
     height: 50px;
@@ -1017,8 +1034,9 @@ a.nav-link {
     margin-right: 20px;
   }
   .peer-learning-body p {
-    font-size: 18px;
+    font-size: 15px;
     margin-bottom: 0;
+
   }
 
   .admission-procedure-card {
@@ -1282,7 +1300,9 @@ a.nav-link {
 /* sliderstyle */
 
 .navbar-brand img {
-  width: 180px;
+  /* width: 180px; */
+  height: 59px;
+  width: 76px;
 }
 .footer div div div .playstore {
   width: 180px;
@@ -1423,4 +1443,51 @@ input[type="number"] {
 
 .second-sec-bottom-img{
   width: 100%;
+}
+
+.span-danger {
+  font-size: 12px;
+  font-weight: 800;
+  height: 0;
+  color: red;
+  display: block !important;
+  width: 100%;
+}
+
+
+
+.btn-blue:hover ,
+.btn:hover {
+  background: #2c75e4 !important;
+}
+
+
+.blog-card{
+  margin-bottom: 20px;
+  min-height: 252px;
+  position: relative;
+}
+.blog-card-img img{
+  width: 100%;
+  height: 82px;
+}
+
+.blog-card-details h5{
+  font-size: 15px;
+  margin: 10px 0;
+  height: 35px;
+  overflow: hidden;
+}
+.blog-card-details p{
+  font-size: 12px;
+  color: #9a9a9a;
+  margin-bottom: 10px;
+  height: 75px;
+  overflow: hidden;
+}
+.blog-card-details a{
+  font-size: 13px;
+  display: block;
+  position: absolute;
+  bottom: 0;
 }

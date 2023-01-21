@@ -1,4 +1,5 @@
-<?php include('include/header.php')?>
+<?php include('./dashboard/connection.php') ?>
+<?php include('include/header.php') ?>
 
 <section class="first-sec">
   <div class="container">
@@ -10,12 +11,9 @@
           </h2>
 
           <p class="mb-3 text-white  min3-font">
-            RHCE is a mid-to advanced-level certification course covering Linux networking and security (RH254). It
-            builds on the RHCSA certification by covering more advanced topics like security and installing standard
-            enterprise networking (IP) services. Some popular programs are Red Hat Certified Engineer (RHCE) and Red Hat
-            certified system Administrators (RHCSA). To get RHCE, you should get certified as a Red Hat Certified System
-            Administrator (RHCSA) first; the requirements to achieve are in the same order Red Hat Enterprise Linux
-            Technical Overview.
+            Red Hat Certified System Administrator (RHCSA) is an entry-level certification course that covers Linux essentials (RH124) and Linux administration (RH134). It focuses on fundamental skills in system administration, such as installing and configuring a Red Hat Enterprise Linux system and connecting it to a live network where network services are running.
+
+            Linux2Cloud’s Automation with Ansible also known as RHCE teaches the skills needed to manage large numbers of systems and applications efficiently and consistently. You will learn the techniques needed to use Ansible® to automate provisioning, configuration, application deployment, and orchestration.
           </p>
 
           <div class="mb-md-5 mb-0">
@@ -25,29 +23,26 @@
         </div>
       </div>
       <div class="col-md-5 col-sm-5 col-12 first-sec-form py-4">
-        <div class="rt-side">
+        <div class="rt-side mt-4">
           <div class="join-us-card mx-4">
             <h5 class="mb-4 mx-3">Upskill for Your Dream Job</h5>
-            <form>
-              <div class="mx-2 mb-4">
+            <form class="contact-form" id="form" method="POST" action="">
+              <div class=" mb-4">
                 <div class="mb-3">
-                  <input type="text" class="form-control" placeholder="Full Name" />
+                  <input type="text" name="name" class="form-control" placeholder="Full Name" required autocomplete="off" id="name" />
                 </div>
                 <div class="mb-3">
-                  <input type="email" class="form-control" placeholder="Email" />
+                  <input type="email" name="email" class="form-control" placeholder="Email" required autocomplete="off" id="email" />
                 </div>
                 <div class="mb-3">
-                  <input type="number" class="form-control" placeholder="Mobile Number" />
+                  <input type="number" name="number" class="form-control" placeholder="Mobile Number" required autocomplete="off" id="number" />
                 </div>
                 <div class="mb-3">
-                  <input type="text" class="form-control" placeholder="Work Experience" />
+                  <input type="text" name="city" class="form-control" placeholder="City" required autocomplete="off" id="city" />
                 </div>
-                <div class="mb-3">
-                  <input type="text" class="form-control" placeholder="City" />
+                <div class="mb-3 pt-1">
+                  <button type="submit" class="btn w-100">Submit</button>
                 </div>
-              </div>
-              <div class="mb-3 pt-1">
-                <button type="submit" class="btn w-100">Submit</button>
               </div>
               <div class="mb-2">
                 <p class="mb-0" style="font-size: 15px;">
@@ -56,7 +51,41 @@
                   <a href="#" class="policy">Privacy Policy</a>
                 </p>
               </div>
+              <div class="msg_reply"></div>
             </form>
+
+            <?php
+
+            if (isset($_REQUEST['number'])) {
+              $name = htmlspecialchars($_REQUEST['name']);
+
+              $email = htmlspecialchars($_REQUEST['email']);
+
+              $number = $_REQUEST['number'];
+
+              $city = $_REQUEST['city'];
+
+
+              try {
+                $query = "insert into contact (name,email,number,city) values ('$name','$email' , '$number' , '$city')";
+                $subscribe = mysqli_query($conn, $query);
+
+
+
+                if ($subscribe) {
+
+                  echo "<span class='text-white'>submitted successfuly.</span>";
+                } else {
+
+                  echo "<span class='text-white'>failed to submit.</span>" . mysqli_error($conn);
+                }
+              } catch (\Exception $e) {
+                printf(mysqli_error($conn));
+              }
+            }
+
+            ?>
+
           </div>
         </div>
       </div>
@@ -86,19 +115,19 @@
         <div class="col-md-3 col-12 card-body">
           <img src="./assets/Cash in Hand.png" alt="" class="second-sec-top-img" />
           <p class="head">Dedicated </p>
-          <p class="sub-head">Lab Session</p>
+          <p class="sub-head">Virtual Lab Session</p>
         </div>
       </div>
     </div>
     <div class="bottom row d-flex justify-content-center pt-5 px-md-5">
-      <div class="col-sm-6 col-6 mb-3 mb-md-0 ">
+      <div class="col-sm-6 col-md-4 col-6 mb-3 mb-md-0 ">
         <img src="./assets/Group 5.png" alt="" class="second-sec-bottom-img" />
       </div>
-      <div class="col-sm-6 col-6 mb-3 mb-md-0 ">
+      <div class="col-sm-6 col-md-4 col-6 mb-3 mb-md-0 ">
         <div class=""></div>
         <img src="./assets/Group6.png" alt="" class="second-sec-bottom-img" />
       </div>
-      <div class="col-sm-12 col-12 mb-3 mb-md-0 ">
+      <div class="col-sm-12 col-md-4 col-12 mb-3 mb-md-0 ">
         <img src="./assets/Group 7.png" alt="" class="second-sec-bottom-img" />
       </div>
     </div>
@@ -120,14 +149,16 @@
           <a href="#Projects">Projects</a>
         </li>
         <li>
-          <a href="#Peer">Ebook section</a>
+          <a href="#Reviews">Reviews</a>
         </li>
         <li>
           <a href="#Career">Career Services</a>
         </li>
         <li>
-          <a href="#Reviews">Reviews</a>
+          <a href="#Peer">Ebook section</a>
         </li>
+
+
         <li>
           <a href="#Admission">Admission</a>
         </li>
@@ -141,57 +172,55 @@
         <div class="row mt-4 justify-content-between">
           <div class="col-md-8 col-12">
             <h3 class="mb-4">About Program</h3>
-            <p class="min-font">Red Hat Certified System Administrator (RHCSA) is an entry-level certification course that
-              covers Linux essentials (RH124) and Linux administration (RH134). It focuses on fundamental skills in
-              system administration, such as installing and configuring a Red Hat Enterprise Linux system and connecting
-              it to a live network where network services are running. </p>
-            <p class="min-font">RHCE is a mid-to advanced-level certification course covering Linux networking and security (RH254). It
-              builds on the RHCSA certification by covering more advanced topics like security and installing standard
-              enterprise networking (IP) services. Some popular programs are Red Hat Certified Engineer (RHCE) and Red
-              Hat certified system Administrators (RHCSA). To get RHCE, you should get certified as a Red Hat Certified
-              System Administrator (RHCSA) first; the requirements to achieve are in the same order Red Hat Enterprise
-              Linux Technical Overview. </p>
+            <p class="min-font">
+              Understand and use essential tools for handling files, directories, command-line environments, and documentation
+              Operate running systems, including booting into different run levels, identifying processes, starting and stopping virtual machines, and controlling services
+              Configure local storage using partitions and logical volumes
+              Create and configure file systems and file system attributes, such as permissions, encryption, access control lists, and network file systems
+              Deploy, configure, and maintain systems, including software installation, update, and core services
+              Manage users and groups, including the use of a centralized directory for authentication
+              Manage security, including basic firewall and SELinux configuration </p>
             <div class="about-program-card p-4">
               <h5 class="ms-3 mb-4 lightgreen">Key Highlights</h5>
               <div class="row">
                 <div class="col-md-6 col-12 py-2 d-flex align-items-center">
-                  <img class="balance-bp mx-2 mt-0" src="./assets/Ellipse 1.png" alt="" height="20px"  />
+                  <img class="balance-bp mx-2 mt-0" src="./assets/Ellipse 1.png" alt="" height="20px" />
                   <p class="mb-0 min-font fw-500">Duration 90 hours</p>
                 </div>
                 <div class="col-md-6 col-12 py-2 d-flex align-items-center">
-                  <img class="balance-bp mx-2 mt-0" src="./assets/Ellipse 1.png" alt="" height="20px"  />
+                  <img class="balance-bp mx-2 mt-0" src="./assets/Ellipse 1.png" alt="" height="20px" />
                   <p class="mb-0 min-font fw-500">Live interacting learning</p>
                 </div>
                 <div class="col-md-6 col-12 py-2 d-flex align-items-center">
-                  <img class="balance-bp mx-2 mt-0" src="./assets/Ellipse 1.png" alt="" height="20px"  />
+                  <img class="balance-bp mx-2 mt-0" src="./assets/Ellipse 1.png" alt="" height="20px" />
                   <p class="mb-0 min-font fw-500">10+ projects and exercises</p>
                 </div>
                 <div class="col-md-6 col-12 py-2 d-flex align-items-center">
-                  <img class="balance-bp mx-2 mt-0" src="./assets/Ellipse 1.png" alt="" height="20px"  />
+                  <img class="balance-bp mx-2 mt-0" src="./assets/Ellipse 1.png" alt="" height="20px" />
                   <p class="mb-0 min-font fw-500">Course completion Certification</p>
                 </div>
                 <div class="col-md-6 col-12 py-2 d-flex align-items-center">
-                  <img class="balance-bp mx-2 mt-0" src="./assets/Ellipse 1.png" alt="" height="20px"  />
+                  <img class="balance-bp mx-2 mt-0" src="./assets/Ellipse 1.png" alt="" height="20px" />
                   <p class="mb-0 min-font fw-500">100% Job assistance program</p>
                 </div>
                 <div class="col-md-6 col-12 py-2 d-flex align-items-center">
-                  <img class="balance-bp mx-2 mt-0" src="./assets/Ellipse 1.png" alt="" height="20px"  />
+                  <img class="balance-bp mx-2 mt-0" src="./assets/Ellipse 1.png" alt="" height="20px" />
                   <p class="mb-0 min-font fw-500">Flexible Schedule</p>
                 </div>
                 <div class="col-md-6 col-12 py-2 d-flex align-items-center">
-                  <img class="balance-bp mx-2 mt-0" src="./assets/Ellipse 1.png" alt="" height="20px"  />
+                  <img class="balance-bp mx-2 mt-0" src="./assets/Ellipse 1.png" alt="" height="20px" />
                   <p class="mb-0 min-font fw-500">Recorded videos of classes</p>
                 </div>
                 <div class="col-md-6 col-12 py-2 d-flex align-items-center">
-                  <img class="balance-bp mx-2 mt-0" src="./assets/Ellipse 1.png" alt="" height="20px"  />
+                  <img class="balance-bp mx-2 mt-0" src="./assets/Ellipse 1.png" alt="" height="20px" />
                   <p class="mb-0 min-font fw-500">1:1 with Industry Mentors</p>
                 </div>
                 <div class="col-md-6 col-12 py-2 d-flex align-items-center">
-                  <img class="balance-bp mx-2 mt-0" src="./assets/Ellipse 1.png" alt="" height="20px"  />
+                  <img class="balance-bp mx-2 mt-0" src="./assets/Ellipse 1.png" alt="" height="20px" />
                   <p class="mb-0 min-font fw-500">Soft Skills Essential Training</p>
                 </div>
                 <div class="col-md-6 col-12 py-2 d-flex align-items-center">
-                  <img class="balance-bp mx-2 mt-0" src="./assets/Ellipse 1.png" alt="" height="20px"  />
+                  <img class="balance-bp mx-2 mt-0" src="./assets/Ellipse 1.png" alt="" height="20px" />
                   <p class="mb-0 min-font fw-500">Access to Learning Management System</p>
                 </div>
               </div>
@@ -205,7 +234,7 @@
                 <li class="d-flex align-items-center">
                   <img src="./assets/Ellipse 1.png" alt="" height="20px" class="mx-2" />
                   <p>
-                  Completion certificate from linux2cloud.
+                    Completion certificate from linux2cloud.
                   </p>
                 </li>
                 <li class="d-flex align-items-center">
@@ -218,7 +247,7 @@
                 <li class="d-flex align-items-center">
                   <img src="./assets/Ellipse 1.png" alt="" height="20px" class="mx-2" />
                   <p>
-                  Hands on practical training from beginner to advanced level.
+                    Hands on practical training from beginner to advanced level.
                   </p>
                 </li>
               </ul>
@@ -227,24 +256,24 @@
           <div class="col-md-4 d-md-block d-none">
             <div class="career-counselling-card mx-4">
               <div class="card-head">
-                <p class="heading mb-0">Free Career Counselling</p>
+                <p class="heading mb-0 text-start">Free Career Counselling</p>
                 <p class="sub-heading">We are happy to help you 24/7</p>
               </div>
               <div class="card-body">
-                <form>
+                <form action="" method="POST">
                   <div class="mb-4">
                     <div class="mb-3">
-                      <input type="text" class="form-control" placeholder="Name" />
+                      <input type="text" name="con_name" class="form-control" placeholder="Name" required autocomplete="off" />
                     </div>
                     <div class="mb-3">
-                      <input type="email" class="form-control" placeholder="Email" />
+                      <input type="email" name="con_email" class="form-control" placeholder="Email" required autocomplete="off" />
                     </div>
                     <div class="mb-3">
-                      <input type="number" class="form-control" placeholder="Mobile Number" />
+                      <input type="number" name="con_number" class="form-control" placeholder="Mobile Number" required autocomplete="off" />
                     </div>
-                  </div>
-                  <div class="mb-3 pt-1">
-                    <button type="submit" class="btn w-100">Submit</button>
+                    <div class="mb-3 pt-1">
+                      <button type="submit" class="btn btn-blue w-100">Submit</button>
+                    </div>
                   </div>
                   <div class="mb-0">
                     <p class="min-font mb-0">
@@ -254,6 +283,34 @@
                     </p>
                   </div>
                 </form>
+                <?php
+
+                if (isset($_REQUEST['con_name'])) {
+
+                  $con_name = htmlspecialchars($_REQUEST['con_name']);
+                  $con_email = htmlspecialchars($_REQUEST['con_email']);
+                  $con_number = $_REQUEST['con_number'];
+
+
+                  try {
+                    $query = "insert into career (con_name, con_email , con_number) values ('$con_name' , '$con_email' , '$con_number')";
+                    $subscribe4 = mysqli_query($conn, $query);
+
+
+
+                    if ($subscribe4) {
+
+                      echo "<span class='text-white'>submitted successfuly.</span>";
+                    } else {
+
+                      echo "<span class='text-white'>failed to submit.</span>" . mysqli_error($conn);
+                    }
+                  } catch (\Exception $e) {
+                    printf(mysqli_error($conn));
+                  }
+                }
+
+                ?>
               </div>
             </div>
           </div>
@@ -270,25 +327,24 @@
               <div class="career-transition-lt-card">
                 <div class="px-md-4 px-2">
 
-                  <div class="d-flex mb-md-2 mb-1">
-                    <img src="./assets/Ellipse 2.png" alt="" class="d-inline slider_img">
+                  <div class="d-flex mb-md-2 mb-1 align-items-center">
+                    <img src="./docs/Inkedheader.jpg" alt="" class="d-inline slider_img">
                     <div class="ms-1">
-                      <h5 class="fw-bold name mb-0 mb-md-2">Stella</h5>
-                      <p class="details fs-small ">CEO , Pharma.co</p>
+                      <h5 class="fw-bold name mb-0">Akshat Puri</h5>
+                      <!-- <p class="details fs-small ">CEO , Pharma.co</p> -->
 
                     </div>
                   </div>
-                  <p class="text-black">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-                    vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti
-                    sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+                  <p class="text-black">One of the best institutes i have studied in so far. A very big thank you to LINUX2CLOUD because of the learnings and confidence gained after completing my course i was able to clear my interview and bag a CTC of 20 plus LPA .</p>
 
-                  <p class="text-black "> Class aptent taciti sociosqu ad litora torquent per conubia
-                    nostra, per inceptos himenaeos.</p>
-                  <div class="pt-3">
+                  <p class="text-black ">Detailed theory is followed by practical's and assignments for cementing the concept
+                    Well prepared LABS provided for practicing the learnings .
+                    Biggest plus you get additional complimentary sessions to prepare for your respective certifications at no additional cost .</p>
+                  <!-- <div class="pt-3">
                     <h6 class="t-c">Software Engineer</h6>
                     <h6 class="t-c">To </h6>
                     <h6 class="t-c">Consultant Engineer</h6>
-                  </div>
+                  </div> -->
                 </div>
 
               </div>
@@ -357,14 +413,12 @@
           </div>
           <div class="col-md-4 col-12 lady-img-first-bg">
             <div class="lady-img-second-bg"></div>
-            <img src="./assets/christina.png" alt="" class="lady-img d-none" />
+            <img src="./assets/broo.png" alt="" class="lady-img " />
           </div>
         </div>
       </div>
     </section>
   </section>
-
-
 
   <section class="scrollspy" id="Curriculum">
     <div class="container">
@@ -378,9 +432,7 @@
           <div class="master-curriculum-minimum-height">
             <div id="master-curriculum-accordion">
               <div class="card ip-vk-cc-lc">
-                <div class="card-header collapsed curriculum-topics" data-coursid="" id="master-curriculum-heading2"
-                  data-toggle="collapse" data-target="#master-curriculum-collapse2" aria-expanded="true"
-                  aria-controls="master-curriculum-collapse2">
+                <div class="card-header collapsed curriculum-topics" data-coursid="" id="master-curriculum-heading2" data-toggle="collapse" data-target="#master-curriculum-collapse2" aria-expanded="true" aria-controls="master-curriculum-collapse2">
                   <h3 class="master-curriculum-accordion-heading">
                     Red Hat System Administration (RHCSA)
                   </h3>
@@ -389,8 +441,7 @@
                     <span class="curriculum-module">24 Module</span>
                   </p>
                 </div>
-                <div id="master-curriculum-collapse2" class="collapse curriculum-answer"
-                  aria-labelledby="master-curriculum-heading2" data-parent="#master-curriculum-accordion">
+                <div id="master-curriculum-collapse2" class="collapse curriculum-answer" aria-labelledby="master-curriculum-heading2" data-parent="#master-curriculum-accordion">
                   <div class="card-body card-body-vk-ip card-body-">
                     <h6><b>Outline for this course</b></h6>
                     <p>
@@ -516,7 +567,7 @@
                       <strong>Module 22</strong>&nbsp;– Task Scheduling<br />
                       <span><i class="fas fa-circle"></i>Schedule Job Using “at”</span><br />
                       <span><i class="fas fa-circle"></i>Managing Temporary File”</span><br>
-                      
+
                       <strong>Module 23</strong>&nbsp;– Accessing Network Attached Storage<br />
                       <span><i class="fas fa-circle"></i>Creating NFS Server</span><br />
                       <span><i class="fas fa-circle"></i>Creating NFS Client</span><br />
@@ -529,9 +580,7 @@
                 </div>
               </div>
               <div class="card">
-                <div class="card-header collapsed curriculum-topics" data-coursid="" id="master-curriculum-heading3"
-                  data-toggle="collapse" data-target="#master-curriculum-collapse3" aria-expanded="true"
-                  aria-controls="master-curriculum-collapse3">
+                <div class="card-header collapsed curriculum-topics" data-coursid="" id="master-curriculum-heading3" data-toggle="collapse" data-target="#master-curriculum-collapse3" aria-expanded="true" aria-controls="master-curriculum-collapse3">
                   <h3 class="master-curriculum-accordion-heading">
                     Red Hat Certified Engineer (RHCE) RHEL 8
                   </h3>
@@ -540,8 +589,7 @@
                     <span class="curriculum-module">12 Module</span>
                   </p>
                 </div>
-                <div id="master-curriculum-collapse3" class="collapse curriculum-answer"
-                  aria-labelledby="master-curriculum-heading3" data-parent="#master-curriculum-accordion">
+                <div id="master-curriculum-collapse3" class="collapse curriculum-answer" aria-labelledby="master-curriculum-heading3" data-parent="#master-curriculum-accordion">
                   <div class="card-body card-body-vk-ip card-body-">
                     <h6><b>Outline for this course</b></h6>
                     <p>
@@ -610,49 +658,91 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-4 d-none d-lg-block">
-          <div class="career-counselling-card program-card mx-4">
-            <div class="card-head">
-              <p class="heading mb-0">Program starts by</p>
-            </div>
-            <div class="card-body px-0">
-              <div class="line">
-                <p class="date t-c">16</p>
+        <?php
+        $select = mysqli_query($conn, "select * from date_table order by id DESC Limit 1");
+        $inc = 0;
+        while ($item = mysqli_fetch_array($select)) {
+          $inc++
+        ?>
+          <div class="col-lg-4 d-none d-lg-block">
+            <div class="career-counselling-card program-card mx-4">
+              <div class="card-head">
+                <p class="heading mb-0 text-start">Program starts by</p>
               </div>
-              <div class="line">
-              </div>
-              <div class="line">
-              <p class=" t-c">November</p>
-                <p  class="time t-c">Timing : 10:30 AM</p>
+              <div class="card-body px-0">
+                <div class="line">
+                  <p class="date t-c"><?php echo $item['date']; ?></p>
+                </div>
+                <div class="line">
+                </div>
+                <div class="line">
+                  <p class=" t-c"><?php echo $item['month']; ?></p>
+                  <p class="time t-c">Timing : <?php echo $item['time']; ?></p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        <?php } ?>
       </div>
 
-      <!-- <div class="start-application-card my-5">
-        <h5 class="mb-4">Interested in This Program? Secure your spot now.</h5>
-        <p class="mb-0 fw-normal">
+      <div class="start-application-card my-5">
+        <h5 class="mb-3">Interested in This Program? Secure your spot now.</h5>
+        <p class="mb-2 min-font fw-normal">
           The application is free and takes only 1 minutes to complete.
         </p>
-        <form>
-          <div class="row py-3">
+        <form method="POST" action="">
+          <div class="row py-2">
             <div class="col">
-              <input type="email" class="form-control" placeholder="Email" />
+              <input type="email" name="c_email1" id="c_email1" class="form-control" placeholder="Email" required autocomplete="off" />
             </div>
             <div class="input-group col">
               <div class="input-group-text">+91</div>
-              <input type="number" class="form-control" id="specificSizeInputGroupUsername"
-                placeholder="Mobile Number" />
+              <input type="number" style="border-radius: 0 7px 7px 0 !important ;" name="c_number1" class="form-control" id="specificSizeInputGroupUsername" placeholder="Mobile Number" required autocomplete="off" />
             </div>
             <div class="col">
-              <a href="" class="btn w-100">Get free consultation</a>
+              <button type="submit" class="btn w-100">Get free consultation</button>
             </div>
           </div>
+          <div>
+            <div class="msg_reply"></div>
+          </div>
         </form>
-        
-      </div> -->
-      <?php include('include/applicationform.php')?>
+
+        <?php
+
+        if (isset($_REQUEST['c_email1'])) {
+
+          $c_email = htmlspecialchars($_REQUEST['c_email1']);
+
+          $c_number = $_REQUEST['c_number1'];
+
+
+          try {
+            $query = "insert into consultation (c_email , c_number) values ('$c_email' , '$c_number')";
+            $subscribe3 = mysqli_query($conn, $query);
+
+
+
+            if ($subscribe3) {
+
+              echo "<span class='text-white'>submitted successfuly.</span>";
+            } else {
+
+              echo "<span class='text-white'>failed to submit.</span>" . mysqli_error($conn);
+            }
+          } catch (\Exception $e) {
+            printf(mysqli_error($conn));
+          }
+        }
+
+        ?>
+
+
+
+      </div>
+
+      <?php //include('include/applicationform.php') 
+      ?>
     </div>
   </section>
 
@@ -660,45 +750,34 @@
     <div class="container">
       <h3 class="mb-4">Projects</h3>
       <p class="min2-font">
-        Projects will be a part of your Cloud & DevOps Architects Master’s
-        program to consolidate your learning. It will ensure that you have
-        real-world experience in Cloud and DevOps.
+        The gaol of the project is to enhance the security and performance of linux server by implementing best practices recommended by RHCSA (Red Hat Certified System Administrator) and RHCE ( Red Hat Certified Engineer ). This server will host various services such as web, email, and database. The project will focus on following areas:
       </p>
       <div class="pt-5">
         <div class="project-body">
           <div class="beginner-slider-container d-flex justify-content-evenly flex-wrap">
             <div class="project-card">
               <div class="project-card-body">
-                <h5 class="heading my-4">Heading 1</h5>
+                <h5 class="heading my-4">File System Security</h5>
                 <p class="details">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-                  vulputate libero et velit interdum, ac aliquet odio mattis.
-                  Class aptent taciti sociosqu ad litora torquent per conubia
-                  nostra, per inceptos himenaeos.
+                  Configuring file permissions and ownership to prevent unauthorized access, and implmenting backup and disaster recovery plans
                 </p>
               </div>
               <a href="#" class="btn w-100">View</a>
             </div>
             <div class="project-card">
               <div class="project-card-body">
-                <h5 class="heading my-4">Heading 1</h5>
+                <h5 class="heading my-4">Automation(Ansible)</h5>
                 <p class="details">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-                  vulputate libero et velit interdum, ac aliquet odio mattis.
-                  Class aptent taciti sociosqu ad litora torquent per conubia
-                  nostra, per inceptos himenaeos.
+                  "Unlock the power of automation with our comprehensive ansible and automation training for Linux systems. Learn to write efficent playbook and program to automate repetitive tasks.""
                 </p>
               </div>
               <a href="#" class="btn w-100">View</a>
             </div>
             <div class="project-card">
               <div class="project-card-body">
-                <h5 class="heading my-4">Heading 1</h5>
+                <h5 class="heading my-4">Virtualization and Containers</h5>
                 <p class="details">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-                  vulputate libero et velit interdum, ac aliquet odio mattis.
-                  Class aptent taciti sociosqu ad litora torquent per conubia
-                  nostra, per inceptos himenaeos.
+                  "Experience the future of IT and Virtualization and Containers in linux: Optimize Resources and Reduce Costs"
                 </p>
               </div>
               <a href="#" class="btn w-100">View</a>
@@ -714,22 +793,13 @@
       <h3 class="my-4 my-md-5">Reviews</h3>
       <div class="d-flex justify-content-evenly flex-wrap mb-md-5 mb-4">
         <div class="video-container">
-          <iframe width="300" height="300" src="https://www.youtube.com/embed/ZPYZXpLrxlc" title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
+          <iframe width="300" height="300" src="https://www.youtube.com/embed/ZPYZXpLrxlc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="video-container my-md-0 my-2">
-          <iframe width="300" height="300" src="https://www.youtube.com/embed/DfrUAsD2FG8" title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
+          <iframe width="300" height="300" src="https://www.youtube.com/embed/DfrUAsD2FG8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="video-container">
-          <iframe width="300" height="300" src="https://www.youtube.com/embed/Tt0a1qJGzkg" title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
+          <iframe width="300" height="300" src="https://www.youtube.com/embed/Tt0a1qJGzkg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
       </div>
 
@@ -739,13 +809,13 @@
             <div class="swiper-slide review-card-container">
               <div class="review-card">
                 <div class="container">
-                  <div class="row px-2">
-                    <div class="review-card-img col-3 px-0">
+                  <div class="row px-2 align-items-center">
+                    <div class="review-card-img col-3 pe-0 ">
                       <img src="./assets/Vikas.png" alt="" />
                     </div>
                     <div class="col-9 px-0">
-                      <p class="heading mb-0">Vikas Pandey</p>
-                      <p class="sub-heading mb-0"></p>
+                      <p class="heading mb-0 text-start">Vikas Pandey</p>
+                      <p class="sub-heading mb-0 text-start"></p>
                     </div>
                   </div>
                 </div>
@@ -763,13 +833,13 @@
             <div class="swiper-slide review-card-container">
               <div class="review-card">
                 <div class="container">
-                  <div class="row px-2">
-                    <div class="review-card-img col-4 pe-0">
+                  <div class="row px-2 align-items-center">
+                    <div class="review-card-img col-3 pe-0">
                       <img src="./assets/Siva.png" alt="" />
                     </div>
                     <div class="col-8 ps-0">
-                      <p class="heading mb-0">Siva GM</p>
-                      <p class="sub-heading mb-0"></p>
+                      <p class="heading mb-0 text-start">Siva GM</p>
+                      <p class="sub-heading mb-0 text-start"></p>
                     </div>
                   </div>
                 </div>
@@ -791,13 +861,13 @@
             <div class="swiper-slide review-card-container">
               <div class="review-card">
                 <div class="container">
-                  <div class="row px-2">
-                    <div class="review-card-img col-4 pe-0">
+                  <div class="row px-2 align-items-center">
+                    <div class="review-card-img col-3 pe-0">
                       <img src="./assets/Nikhil.png" alt="" />
                     </div>
                     <div class="col-8 ps-0">
-                      <p class="heading mb-0">Nikhil Kumar</p>
-                      <p class="sub-heading mb-0"></p>
+                      <p class="heading mb-0 text-start">Nikhil Kumar</p>
+                      <p class="sub-heading mb-0 text-start"></p>
                     </div>
                   </div>
                 </div>
@@ -822,13 +892,13 @@
             <div class="swiper-slide review-card-container">
               <div class="review-card">
                 <div class="container">
-                  <div class="row px-2">
-                    <div class="review-card-img col-4 pe-0">
+                  <div class="row px-2 align-items-center">
+                    <div class="review-card-img col-3 pe-0">
                       <img src="./assets/Kavinder.png" alt="" />
                     </div>
                     <div class="col-8 ps-0">
-                      <p class="heading mb-0">Kavinder Singh</p>
-                      <p class="sub-heading mb-0"></p>
+                      <p class="heading mb-0 text-start">Kavinder Singh</p>
+                      <p class="sub-heading mb-0 text-start"></p>
                     </div>
                   </div>
                 </div>
@@ -844,13 +914,13 @@
             <div class="swiper-slide review-card-container">
               <div class="review-card">
                 <div class="container">
-                  <div class="row px-2">
-                    <div class="review-card-img col-4 pe-0">
+                  <div class="row px-2 align-items-center">
+                    <div class="review-card-img col-3 pe-0">
                       <img src="./assets/Akash.png" alt="" />
                     </div>
                     <div class="col-8 ps-0">
-                      <p class="heading mb-0">Akash Sharma</p>
-                      <p class="sub-heading mb-0"></p>
+                      <p class="heading mb-0 text-start">Akash Sharma</p>
+                      <p class="sub-heading mb-0 text-start"></p>
                     </div>
                   </div>
                 </div>
@@ -869,13 +939,13 @@
             <div class="swiper-slide review-card-container">
               <div class="review-card">
                 <div class="container">
-                  <div class="row px-2">
-                    <div class="review-card-img col-4 pe-0">
+                  <div class="row px-2 align-items-center">
+                    <div class="review-card-img col-3 pe-0">
                       <img src="./assets/sourabh.png" alt="" />
                     </div>
                     <div class="col-8 ps-0">
-                      <p class="heading mb-0">Sourabh saroha</p>
-                      <p class="sub-heading mb-0"></p>
+                      <p class="heading mb-0 text-start">Sourabh saroha</p>
+                      <p class="sub-heading mb-0 text-start"></p>
                     </div>
                   </div>
                 </div>
@@ -904,9 +974,11 @@
             <div class="col-6 col-md-2">
               <img src="./assets/alumini/adci.png" alt="" class="img-fluid">
             </div>
-            <div class="col-6 col-md-2">
+
+            <!-- <div class="col-6 col-md-2">
               <img src="./assets/alumini/Adobe.png" alt="" class="img-fluid">
-            </div>
+            </div> -->
+
             <div class="col-6 col-md-2">
               <img src="./assets/alumini/amazon.png" alt="" class="img-fluid">
             </div>
@@ -937,9 +1009,9 @@
             <div class="col-6 col-md-2">
               <img src="./assets/alumini/hcl.png" alt="" class="img-fluid">
             </div>
-            <div class="col-6 col-md-2">
+            <!-- <div class="col-6 col-md-2">
               <img src="./assets/alumini/ibm.png" alt="" class="img-fluid">
-            </div>
+            </div> -->
             <div class="col-6 col-md-2">
               <img src="./assets/alumini/infosys.png" alt="" class="img-fluid">
             </div>
@@ -994,11 +1066,10 @@
         <h3 class="mb-4">Ebook section</h3>
       </div>
       <div class="peer-learning-body py-4">
-        <div class="row">
-          <div
-            class="col-md-7 col-12 order-2 order-md-1 d-flex justify-content-md-end justify-content-start align-items-center">
+        <div class="row justify-content-between px-md-5 ">
+          <div class="col-md-6 col-12 order-2 order-md-1 d-flex  justify-content-start align-items-center">
             <div class="d-flex flex-column">
-              <p class="ebook-heading">Which is <br> better Cloud</p>
+              <p class="ebook-heading mb-4">Which is <br> better Cloud</p>
               <div class="star-container d-flex mb-4">
                 <img src="./assets/Christmas Star.png" alt="" class="img-fluid">
                 <img src="./assets/Christmas Star.png" alt="" class="img-fluid">
@@ -1010,12 +1081,12 @@
                 and batches and <br> even our alumni. Collaborate on projects, share <br> job referrals & interview
                 experiences, </p>
               <p class="text-grey ">Free</p>
-              <a href="#" class="btn ebook-btn">Download</a>
+              <!-- <a href="#" class="btn ebook-btn">Download</a> -->
             </div>
           </div>
           <div class="col-md-5 col-12 order-1 order-md-2 peer-img d-flex">
             <div class="mx-auto">
-              <img src="./assets/1,286 1.png" alt="" class="img-fluid">
+              <img src="./assets/Group105.png" alt="" class="img-fluid">
             </div>
           </div>
         </div>
@@ -1033,7 +1104,7 @@
         and phone, and they can block their seats through the payment of the
         admission fee.
       </p>
-      <div class="d-flex justify-content-evenly flex-wrap py-md-5 py-4">
+      <!-- <div class="d-flex justify-content-evenly flex-wrap py-md-5 py-4">
         <div class="admission-procedure-card">
           <div class="admission-procedure-card-img">
             <img src="./assets/Paper2.png" alt="" class="" />
@@ -1061,6 +1132,57 @@
           <p class="sub-heading">
             Selected candidates will be notified within 1–2 weeks
           </p>
+        </div>
+      </div> -->
+
+      <div class="row mx-0 mb-4">
+        <div class="col-md-3 col-sm-6 col-6">
+          <div class="blog-card">
+            <div class="blog-card-img">
+              <img src="./assets/blogs/b1.jpg" alt="">
+            </div>
+            <div class="blog-card-details">
+              <h5>Red Hat Traning for unlimited possibility and career opportunities</h5>
+              <p>Today, the IT industry is advancing at an aggressive pace and is always on the lookout for talented and decidedly skilled employees...</p>
+              <a href="https://linux2cloud.com/redhat-training-for-unlimited-possibilities-and-career-opportunities/">Read more</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-6">
+          <div class="blog-card">
+            <div class="blog-card-img">
+              <img src="./assets/blogs/b2.jpg" alt="">
+            </div>
+            <div class="blog-card-details">
+              <h5>Top 8 Reasons Why You Should Choose Linux?</h5>
+              <p>Linux, the open-source operating system is witnessing its prime success in 2021. The OS (Operating System) was predominantly used by programmers, but now it’s getting more popular among everyday users across the globe. If you are looking for a better OS alternative, then Linux might be the perfect solution</p>
+              <a href="https://linux2cloud.com/top-8-reasons-why-you-should-choose-linux/">Read more</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-6">
+          <div class="blog-card">
+            <div class="blog-card-img">
+              <img src="./assets/blogs/b3.jpg" alt="">
+            </div>
+            <div class="blog-card-details">
+              <h5>Things You Didn't Know About br Ansible?</h5>
+              <p>The growing buzz about Ansible in recent years is all for the right reasons. This software automation engine came out of...</p>
+              <a href="https://linux2cloud.com/things-you-didnt-know-about-ansible/">Read more</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-6">
+          <div class="blog-card">
+            <div class="blog-card-img">
+              <img src="./assets/blogs/b4.jpg" alt="">
+            </div>
+            <div class="blog-card-details">
+              <h5>What Jobs Are Available After Getting Red hat RHCA And RHCE Certification?</h5>
+              <p>Red Hat certification offers several professional certifications based on its software products such as operating systems, storage, and cloud-based solutions, and visualization...</p>
+              <a href="https://linux2cloud.com/what-jobs-are-available-after-getting-red-hat-rhcsa-and-rhce-certification/">Read more</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1125,17 +1247,13 @@
                 <img src="./assets/certificates/Certificates-2 (2).jpg" alt="" class="img-fluid">
               </div>
               <div class="swiper-slide">
-                <img
-                  src="./assets/certificates/pawan-kumar-b3f89a8f-8173-4c19-94b6-044b45890983-certificate-2-1-1-1-1.jpg"
-                  alt="" class="img-fluid">
+                <img src="./assets/certificates/pawan-kumar-b3f89a8f-8173-4c19-94b6-044b45890983-certificate-2-1-1-1-1.jpg" alt="" class="img-fluid">
               </div>
               <div class="swiper-slide">
-                <img src="./assets/certificates/Red_Hat_Certificate_RHCSA-rhel_Aparna_Sharma-1-1-1-1.jpg" alt=""
-                  class="img-fluid">
+                <img src="./assets/certificates/Red_Hat_Certificate_RHCSA-rhel_Aparna_Sharma-1-1-1-1.jpg" alt="" class="img-fluid">
               </div>
               <div class="swiper-slide">
-                <img src="./assets/certificates/Red_Hat_Certificate_RHCSA-rhel_Kavinder_Singh_page-0001-1.jpg" alt=""
-                  class="img-fluid">
+                <img src="./assets/certificates/Red_Hat_Certificate_RHCSA-rhel_Kavinder_Singh_page-0001-1.jpg" alt="" class="img-fluid">
               </div>
               <div class="swiper-slide">
                 <img src="./assets/certificates/Satellite-Certificate.jpg" alt="" class="img-fluid">
@@ -1188,241 +1306,36 @@
           <div id="master-faq-accordion" class="master-curriculum-minimum-height master-curriculum-maximum-height">
             <div class="card">
               <h3 class="card-header curriculum-topics show">
-                What can I expect from this program?
+                What is the training Duration for RHCE Training?
               </h3>
               <div id="master-faq-collapse1" class="curriculum-answer show">
                 <div class="card-body">
                   <p>
-                    Intellipaat’s job guarantee Program in Cloud Computing and
-                    DevOps has a structured learning path specially designed by
-                    industry experts, which ensures that you can become a Cloud
-                    and DevOps expert. If you want to pursue master’s in cloud
-                    computing online, then this program is for you. You will
-                    also receive expert training and 100% job guarantee with
-                    this program.
+                    The training duration for RHCSA + RHCE is 90 hours.
                   </p>
                 </div>
               </div>
             </div>
             <div class="card">
               <h3 class="card-header curriculum-topics">
-                How will I get certified?
+                Do I study in classroom or online?
               </h3>
               <div id="master-faq-collapse2" class="curriculum-answer">
                 <div class="card-body">
                   <p>
-                    On the completion of all the required assignments, case
-                    studies, quiz and project work you will graduated from the
-                    course and you will receive your certification.
+                    The Training is available live online by a certified instructor
                   </p>
                 </div>
               </div>
             </div>
             <div class="card">
               <h3 class="card-header curriculum-topics">
-                What is the average salary of a cloud architect?
+                What if I miss a session?
               </h3>
               <div id="master-faq-collapse3" class="curriculum-answer">
                 <div class="card-body">
                   <p>
-                    According to Glassdoor, the average annual salary of a
-                    certified cloud architect in India is ₹1,919,822.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <h3 class="card-header curriculum-topics">
-                What are the various cloud computing job opportunities?
-              </h3>
-              <div id="master-faq-collapse4" class="curriculum-answer">
-                <div class="card-body">
-                  <p>
-                    There are over 56,000+ cloud architect jobs in the United
-                    States listed on LinkedIn. While India has over 7,000 cloud
-                    architect job opportunities listed on LinkedIn.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <h3 class="card-header curriculum-topics">
-                Is programming knowledge required to successfully learn the concepts of cloud computing and DevOps?
-              </h3>
-              <div id="master-faq-collapse5" class="curriculum-answer ">
-                <div class="card-body">
-                  <p>No, you dont need any programming knowledge to start with this course.</p>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <h3 class="card-header curriculum-topics">
-                Which are the top companies hiring in this domain? </h3>
-              <div id="master-faq-collapse6" class="curriculum-answer ">
-                <div class="card-body">
-                  <p>The following are some of the companies that are actively hiring cloud architects:</p>
-                  <ul>
-                    <li>Deloitte</li>
-                    <li>Cognizant</li>
-                    <li>Accenture</li>
-                    <li>Capgemini</li>
-                    <li>Pythian</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <h3 class="card-header curriculum-topics">
-                What kind of projects and assignments will I be working on as a part of this program? </h3>
-              <div id="master-faq-collapse7" class="curriculum-answer ">
-                <div class="card-body">
-                  <p>You will get the opportunity to work on multiple projects and assignments, which will provide you
-                    with real-world industry exposure. At the end of the course, you will work on a capstone project as
-                    well, which has a research element, and you can showcase the same to top companies to get hired.</p>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <h3 class="card-header curriculum-topics">
-                Which exams will I be able to clear once I complete this course? </h3>
-              <div id="master-faq-collapse8" class="curriculum-answer ">
-                <div class="card-body">
-                  <p><span style="font-weight: 400;">Following are some of the certification exams that you will be able
-                      to easily clear if you complete our program:</span></p>
-                  <ul>
-                    <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">AWS Solutions Architect
-                        Associate Exam</span></li>
-                    <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">AZ-105: Microsoft Azure
-                        Configure Infrastructure&nbsp;</span></li>
-                    <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Azure Data Engineering
-                        DP 203</span></li>
-                    <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Exam AZ-305: Designing
-                        Microsoft Azure Infrastructure Solutions</span></li>
-                    <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Google Cloud
-                        Professional Architect Certification Exam</span></li>
-                    <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Java SE Programmer
-                        Certification</span></li>
-                    <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Linux Foundation Linux
-                        Certification</span></li>
-                    <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Splunk Certified Power
-                        User Certification</span></li>
-                    <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Splunk Certified Admin
-                        Certification</span></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <h3 class="card-header curriculum-topics">
-                How will I be eligible for the various services under the job-guarantee clause? </h3>
-              <div id="master-faq-collapse9" class="curriculum-answer ">
-                <div class="card-body">
-                  <p>To be eligible to avail the job guarantee career services, the candidate has to comply to these
-                    conditions:</p>
-                  <ul>
-                    <li>Maintain at least 85% attendance in live classes for each phase of the program</li>
-                    <li>Successfully clear all the courses and modules of the program</li>
-                    <li>Submit all your course-end projects and capstone project within 7 days of program completion.
-                    </li>
-                    <li>Complete all the mandatory assignments, case studies and projects within the given timelines.
-                    </li>
-                    <li>Actively participate in the hackathons or other events arranged for the course.</li>
-                    <li>Complete at least 80% of the self-learning videos</li>
-                    <li>You need to clear the Placement Readiness Test (PRT) once you graduate from the course. Only
-                      those candidates who clear the PRT will be allowed Career Services by Intellipaat.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <h3 class="card-header curriculum-topics">
-                What is expected from a candidate during the job-guarantee period? </h3>
-              <div id="master-faq-collapse10" class="curriculum-answer ">
-                <div class="card-body">
-                  <p>The following is expected from the candidates during the job- guarantee period:</p>
-                  <ul>
-                    <li>Should be sincere and give their 100% to secure a good job.</li>
-                    <li>Attend all the career preparation sessions that are conducted</li>
-                    <li>Should improve on feedback provided to clear the crack interviews.</li>
-                    <li>Remain active in job search and applying to at least 30 jobs per month</li>
-                    <li>Once shortlisted for a job, the candidate should go through with the entire selection process.
-                    </li>
-                    <li>You should be open for relocation, mostly all our hiring partners are from metro cities.</li>
-                  </ul>
-                  <p>Note: Failure to comply with any of the above will result in the job-guarantee clause being
-                    terminated for the candidate.</p>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <h3 class="card-header curriculum-topics">
-                What are the eligibility criteria for this program? </h3>
-              <div id="master-faq-collapse11" class="curriculum-answer ">
-                <div class="card-body">
-                  <p>To be eligible for this program, you will need to meet the following criteria:</p>
-                  <ul>
-                    <li>Hold an IT degree, B.Sc., M.Sc. B.E, B.Tech, B.Com, MBA from an accredited institution. Final
-                      year students in any of the above degree programs can also apply.</li>
-                    <li>Have a minimum of 60% throughout their academic journey (i.e. X, XII, Graduation, and
-                      Post-graduation) Have valid mark sheets and degree certificates for verification</li>
-                    <li>Must be allowed to legally work in India</li>
-                    <li>Have a valid Aadhar Card and PAN Card</li>
-                    <li>Must pass the background check from previous employer/institute</li>
-                  </ul>
-                  <p>Note : If you are in your final year of college, then you will be required to submit all mark
-                    sheets &amp; certificates earned till the last semester (with at least 50% up to your last semester)
-                    and proof from your college that mentions the month and year of your graduation.</p>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <h3 class="card-header curriculum-topics">
-                How does money back guarantee work? </h3>
-              <div id="master-faq-collapse12" class="curriculum-answer ">
-                <div class="card-body">
-                  <p>All the students who have enrolled for this Job Guarantee program and completed the course along
-                    with passing the Placement Readiness Test, are eligible to avail the career services offered by
-                    Intellipaat. The career services are provided to the students for a period of 6 months. However, if
-                    the student is unable to secure a job within these 6 months, he/she can raise a request for refund.
-                    Refund of the fees will be done within 30 days from the date of the request raised excluding Taxes.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <h3 class="card-header curriculum-topics">
-                What is the salary I can receive after the course? </h3>
-              <div id="master-faq-collapse13" class="curriculum-answer ">
-                <div class="card-body">
-                  <p>The cloud computing market is expected to grow by 35% in 2022, which would generate many
-                    opportunities for cloud computing professionals. The minimum salary that a Cloud professional earns
-                    is around 5 Lakhs and the highest that he/she can earn is upto 20 Lakhs.</p>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <h3 class="card-header curriculum-topics">
-                What is the admission process for Intellipaat’s Job Guarantee program? </h3>
-              <div id="master-faq-collapse14" class="curriculum-answer ">
-                <div class="card-body">
-                  <p>The following are the steps involved in the application process for this Job Guarantee program:</p>
-                  <ul>
-                    <li>As the first step, the candidate is required to fill the application form for the program.</li>
-                    <li>On receipt of the application form, our career counselor will reach out to the candidate and
-                      understand their profile.</li>
-                    <li>Once the profile gets shortlisted, the candidate will be offered admission to this Job Guarantee
-                      program.</li>
-                    <li>On receiving the offer, the candidate can pay the fee amount and confirm his/her seat.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <h3 class="card-header curriculum-topics">
-                How long does it take for the course to complete? </h3>
-              <div id="master-faq-collapse15" class="curriculum-answer ">
-                <div class="card-body">
-                  <p>The live classes will go on for around 6 months and later you will be working on capstone project.
+                    All our sessions are recorded, the recordings our uploaded to our student portal from where you can access it. The recordings are available for lifetime on the student portal.
                   </p>
                 </div>
               </div>
@@ -1431,41 +1344,67 @@
         </div>
       </div>
 
-      <!-- <div class="start-application-card my-5">
-        <h5 class="mb-4">Interested in This Program? Secure your spot now.</h5>
-        <p class="mb-0 fw-normal">
-          The application is free and takes only 5 minutes to complete.
+
+
+
+      <div class="start-application-card my-5">
+        <h5 class="mb-3">Interested in This Program? Secure your spot now.</h5>
+        <p class="mb-2 min-font fw-normal">
+          The application is free and takes only 1 minutes to complete.
         </p>
-        <form>
-          <div class="row py-3">
+        <form method="POST" action="">
+          <div class="row py-2">
             <div class="col">
-              <input type="email" class="form-control" placeholder="Email" />
+              <input type="email" name="c_email" id="c_email" class="form-control" placeholder="Email" required autocomplete="off" />
             </div>
             <div class="input-group col">
               <div class="input-group-text">+91</div>
-              <input type="number" class="form-control" id="specificSizeInputGroupUsername"
-                placeholder="Mobile Number" />
+              <input type="number" style="border-radius: 0 7px 7px 0 !important ;" name="c_number" class="form-control" id="c_number" placeholder="Mobile Number" required autocomplete="off" />
             </div>
             <div class="col">
-              <a href="" class="btn w-100">Start Application</a>
+              <button type="submit" class="btn w-100">Get free consultation</button>
             </div>
           </div>
+          <div>
+            <div class="msg_reply"></div>
+          </div>
         </form>
-        <p class="fs-smaller fw-normal mb-0">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-          vulputate libero et velit interdum, ac aliquet odio mattis.
-        </p>
-      </div> -->
-      <?php include('include/applicationform.php')?>
+
+        <?php
+
+        if (isset($_REQUEST['c_email'])) {
+
+          $c_email = htmlspecialchars($_REQUEST['c_email']);
+
+          $c_number = $_REQUEST['c_number'];
+
+
+          try {
+            $query = "insert into consultation (c_email , c_number) values ('$c_email' , '$c_number')";
+            $subscribe3 = mysqli_query($conn, $query);
+
+
+
+            if ($subscribe3) {
+
+              echo "<span class='text-white'>submitted successfuly.</span>";
+            } else {
+
+              echo "<span class='text-white'>failed to submit.</span>" . mysqli_error($conn);
+            }
+          } catch (\Exception $e) {
+            printf(mysqli_error($conn));
+          }
+        }
+
+        ?>
+
+      </div>
+      <?php // include('include/applicationform.php') 
+      ?>
     </div>
   </section>
 </section>
-
-
-<!-- Button trigger modal -->
-<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button> -->
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -1475,35 +1414,244 @@
         <button type="button" class="btn-close position-absolute" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body p-0">
-      <div class="join-us-card" style="">
-            <h5 class="mb-3">Upskill for Your Dream Job</h5>
-            <form>
-              <div class="mx-0  mb-4">
-                <div class="mb-3">
-                  <input type="text" class="form-control" placeholder="Full Name" />
-                </div>
-                <div class="mb-3">
-                  <input type="email" class="form-control" placeholder="Email" />
-                </div>
-                <div class="mb-3">
-                  <input type="number" class="form-control" placeholder="Mobile Number" />
-                </div>
-                <div class="mb-3">
-                  <input type="text" class="form-control" placeholder="City" />
-                </div>
+        <div class="join-us-card" style="">
+          <h5 class="mb-3">Upskill for Your Dream Job</h5>
+          <form class="contact-form" id="form-contact" method="POST" action="">
+            <div class=" mb-4">
+              <div class="mb-3">
+                <input type="text" name="name0" class="form-control" placeholder="Full Name" required autocomplete="off" id="name" />
+              </div>
+              <div class="mb-3">
+                <input type="email" name="email0" class="form-control" placeholder="Email" required autocomplete="off" id="email" />
+              </div>
+              <div class="mb-3">
+                <input type="number" name="number0" class="form-control" placeholder="Mobile Number" required autocomplete="off" id="number" />
+              </div>
+              <div class="mb-3">
+                <input type="text" name="city0" class="form-control" placeholder="City" required autocomplete="off" id="city" />
               </div>
               <div class="mb-3 pt-1">
                 <button type="submit" class="btn w-100">Submit</button>
               </div>
-              <div class="mb-2">
-                <p class="mb-0" style="font-size: 15px;">
-                  By providing your contact details, you agree to our
-                  <a href="#" class="terms">Terms of Use</a> &
-                  <a href="#" class="policy">Privacy Policy</a>
-                </p>
+            </div>
+            <div class="mb-2">
+              <p class="mb-0" style="font-size: 15px;">
+                By providing your contact details, you agree to our
+                <a href="#" class="terms">Terms of Use</a> &
+                <a href="#" class="policy">Privacy Policy</a>
+              </p>
+            </div>
+            <div class="msg_reply"></div>
+          </form>
+
+          <?php
+
+          if (isset($_REQUEST['number0'])) {
+            $name0 = htmlspecialchars($_REQUEST['name0']);
+
+            $email0 = htmlspecialchars($_REQUEST['email0']);
+
+            $number0 = $_REQUEST['number0'];
+
+            $city0 = $_REQUEST['city0'];
+
+
+            try {
+              $query = "insert into contact (name,email,number,city) values ('$name0','$email0' , '$number0' , '$city0')";
+              $subscribe = mysqli_query($conn, $query);
+
+
+
+              if ($subscribe) {
+
+                echo "<span class='text-white'>submitted successfuly.</span>";
+              } else {
+
+                echo "<span class='text-white'>failed to submit.</span>" . mysqli_error($conn);
+              }
+            } catch (\Exception $e) {
+              printf(mysqli_error($conn));
+            }
+          }
+
+          ?>
+        </div>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div class="modal-dialog  ">
+    <div class="modal-content form1">
+      <div class="modal-header position-relative p-0 border-0">
+        <button type="button" class="btn-close position-absolute" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-0">
+        <div class="join-us-card" style="">
+          <h5 class="mb-3">Hire Form</h5>
+          <form>
+            <div class="mx-0  mb-4">
+              <div class="mb-3">
+                <input type="text" name="a_name" class="form-control" placeholder="Name" />
               </div>
-            </form>
-          </div>
+              <div class="mb-3">
+                <input type="email" name="a_email" class="form-control" placeholder="Email" />
+              </div>
+              <div class="mb-3">
+                <input type="number" name="a_number" class="form-control" placeholder="Phone Number" />
+              </div>
+              <div class="mb-3">
+                <input type="text" name="a_company" class="form-control" placeholder="Company Name" />
+              </div>
+              <div class="mb-3">
+                <input type="text" name="a_role" class="form-control" placeholder="Role you Want" />
+              </div>
+              <div class="mb-3">
+                <input type="text" name="a_experience" class="form-control" placeholder="Years of Experience" />
+              </div>
+              <div class="mb-3">
+                <input type="text" name="a_city" class="form-control" placeholder="City of Job" />
+              </div>
+              <div class="mb-3 pt-1">
+                <button type="submit" class="btn w-100">Submit</button>
+              </div>
+            </div>
+            <div class="mb-2">
+              <p class="mb-0" style="font-size: 15px;">
+                By providing your contact details, you agree to our
+                <a href="#" class="terms">Terms of Use</a> &
+                <a href="#" class="policy">Privacy Policy</a>
+              </p>
+            </div>
+          </form>
+          <?php
+
+          if (isset($_REQUEST['a_name'])) {
+
+            $a_name = htmlspecialchars($_REQUEST['a_name']);
+            $a_email = htmlspecialchars($_REQUEST['a_email']);
+            $a_company = htmlspecialchars($_REQUEST['a_company']);
+            $a_city = htmlspecialchars($_REQUEST['a_city']);
+            $a_role = htmlspecialchars($_REQUEST['a_role']);
+            $a_experience = htmlspecialchars($_REQUEST['a_experience']);
+
+            $a_number = $_REQUEST['a_number'];
+
+
+            try {
+              $query = "insert into hire_form (a_name,a_email,a_number,a_company,a_city,a_role,a_experience) values ('$a_name','$a_email','$a_number','$a_company','$a_city','$a_role','$a_experience' )";
+              $subscribe05 = mysqli_query($conn, $query);
+
+
+
+              if ($subscribe05) {
+
+                echo "<span class='text-white'>submitted successfuly.</span>";
+              } else {
+
+                echo "<span class='text-white'>failed to submit.</span>" . mysqli_error($conn);
+              }
+            } catch (\Exception $e) {
+              printf(mysqli_error($conn));
+            }
+          }
+
+          ?>
+
+        </div>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+  <div class="modal-dialog  ">
+    <div class="modal-content form1">
+      <div class="modal-header position-relative p-0 border-0">
+        <button type="button" class="btn-close position-absolute" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-0">
+        <div class="join-us-card" style="">
+          <h5 class="mb-3">Coperate Training Form</h5>
+          <form>
+            <div class="mx-0  mb-4">
+              <div class="mb-3">
+                <input type="text" name="ct_name" class="form-control" placeholder="Name" />
+              </div>
+              <div class="mb-3">
+                <input type="email" name="ct_email" class="form-control" placeholder="Email" />
+              </div>
+              <div class="mb-3">
+                <input type="number" name="ct_number" class="form-control" placeholder="Phone Number" />
+              </div>
+              <div class="mb-3">
+                <input type="text" name="ct_company" class="form-control" placeholder="Company Name" />
+              </div>
+              <div class="mb-3">
+                <input type="text" name="ct_technology" class="form-control" placeholder="Technology you Need to Training" />
+              </div>
+              <div class="mb-3">
+                <input type="text" name="ct_company_loc" class="form-control" placeholder="Company Location" />
+              </div>
+              <div class="mb-3 pt-1">
+                <button type="submit" name="submit" class="btn w-100">Submit</button>
+              </div>
+              
+            </div>
+            <div class="mb-2">
+              <p class="mb-0" style="font-size: 15px;">
+                By providing your contact details, you agree to our
+                <a href="#" class="terms">Terms of Use</a> &
+                <a href="#" class="policy">Privacy Policy</a>
+              </p>
+            </div>
+          </form>
+          <?php
+
+          if (isset($_REQUEST['ct_name'])) {
+
+            $ct_name = htmlspecialchars($_REQUEST['ct_name']);
+            $ct_email = htmlspecialchars($_REQUEST['ct_email']);
+            $ct_company = htmlspecialchars($_REQUEST['ct_company']);
+            $ct_company_loc = htmlspecialchars($_REQUEST['ct_company_loc']);
+            $ct_technology = htmlspecialchars($_REQUEST['ct_technology']);
+            $ct_number = $_REQUEST['ct_number'];
+
+            
+
+            try {
+              $query = "insert into corporate_training (ct_name,ct_email,ct_number,ct_company,ct_company_loc,ct_technology) values ('$ct_name','$ct_email','$ct_number','$ct_company','$ct_company_loc','$ct_technology' )";
+              $subscribe07 = mysqli_query($conn, $query);
+
+
+              
+
+
+              if ($subscribe07) {
+
+                echo "<span class='text-white'>submitted successfuly.</span>";
+              } else {
+
+                echo "<span class='text-white'>failed to submit.</span>" . mysqli_error($conn);
+              }
+            } catch (\Exception $e) {
+              printf(mysqli_error($conn));
+            }
+          }
+
+          ?>
+        </div>
       </div>
       <!-- <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -1515,4 +1663,5 @@
 
 
 
-<?php include('include/footer.php')?>
+
+<?php include('include/footer.php') ?>

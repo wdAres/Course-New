@@ -216,7 +216,7 @@
           <div class="col-md-5 d-md-block d-none">
             <div class="career-counselling-card mx-4">
               <div class="card-head">
-                <p class="heading mb-0">Free Career Counselling</p>
+                <p class="heading mb-0 text-start">Free Career Counselling</p>
                 <p class="sub-heading">We are happy to help you 24/7</p>
               </div>
               <div class="card-body">
@@ -590,7 +590,7 @@
         <div class="col-lg-4 d-none d-lg-block">
           <div class="career-counselling-card program-card mx-4">
             <div class="card-head">
-              <p class="heading mb-0">Program Highlights</p>
+              <p class="heading mb-0 text-start">Program Highlights</p>
             </div>
             <div class="card-body px-0">
               <div class="line">
@@ -719,12 +719,12 @@
               <div class="review-card">
                 <div class="container">
                   <div class="row px-2">
-                    <div class="review-card-img col-3 px-0">
+                    <div class=" px-0">
                       <img src="./assets/Vikas.png" alt="" />
                     </div>
                     <div class="col-9 px-0">
-                      <p class="heading mb-0">Vikas Pandey</p>
-                      <p class="sub-heading mb-0"></p>
+                      <p class="heading mb-0 text-start">Vikas Pandey</p>
+                      <p class="sub-heading mb-0 text-start"></p>
                     </div>
                   </div>
                 </div>
@@ -742,13 +742,13 @@
             <div class="swiper-slide review-card-container">
               <div class="review-card">
                 <div class="container">
-                  <div class="row px-2">
-                    <div class="review-card-img col-4 pe-0">
+                  <div class="row px-2 align-items-center">
+                    <div class="review-card-img col-3 pe-0">
                       <img src="./assets/Siva.png" alt="" />
                     </div>
                     <div class="col-8 ps-0">
-                      <p class="heading mb-0">Siva GM</p>
-                      <p class="sub-heading mb-0"></p>
+                      <p class="heading mb-0 text-start">Siva GM</p>
+                      <p class="sub-heading mb-0 text-start"></p>
                     </div>
                   </div>
                 </div>
@@ -770,13 +770,13 @@
             <div class="swiper-slide review-card-container">
               <div class="review-card">
                 <div class="container">
-                  <div class="row px-2">
-                    <div class="review-card-img col-4 pe-0">
+                  <div class="row px-2 align-items-center">
+                    <div class="review-card-img col-3 pe-0">
                       <img src="./assets/Nikhil.png" alt="" />
                     </div>
                     <div class="col-8 ps-0">
-                      <p class="heading mb-0">Nikhil Kumar</p>
-                      <p class="sub-heading mb-0"></p>
+                      <p class="heading mb-0 text-start">Nikhil Kumar</p>
+                      <p class="sub-heading mb-0 text-start"></p>
                     </div>
                   </div>
                 </div>
@@ -801,13 +801,13 @@
             <div class="swiper-slide review-card-container">
               <div class="review-card">
                 <div class="container">
-                  <div class="row px-2">
-                    <div class="review-card-img col-4 pe-0">
+                  <div class="row px-2 align-items-center">
+                    <div class="review-card-img col-3 pe-0">
                       <img src="./assets/Kavinder.png" alt="" />
                     </div>
                     <div class="col-8 ps-0">
-                      <p class="heading mb-0">Kavinder Singh</p>
-                      <p class="sub-heading mb-0"></p>
+                      <p class="heading mb-0 text-start">Kavinder Singh</p>
+                      <p class="sub-heading mb-0 text-start"></p>
                     </div>
                   </div>
                 </div>
@@ -823,13 +823,13 @@
             <div class="swiper-slide review-card-container">
               <div class="review-card">
                 <div class="container">
-                  <div class="row px-2">
-                    <div class="review-card-img col-4 pe-0">
+                  <div class="row px-2 align-items-center">
+                    <div class="review-card-img col-3 pe-0">
                       <img src="./assets/Akash.png" alt="" />
                     </div>
                     <div class="col-8 ps-0">
-                      <p class="heading mb-0">Akash Sharma</p>
-                      <p class="sub-heading mb-0"></p>
+                      <p class="heading mb-0 text-start">Akash Sharma</p>
+                      <p class="sub-heading mb-0 text-start"></p>
                     </div>
                   </div>
                 </div>
@@ -848,13 +848,13 @@
             <div class="swiper-slide review-card-container">
               <div class="review-card">
                 <div class="container">
-                  <div class="row px-2">
-                    <div class="review-card-img col-4 pe-0">
+                  <div class="row px-2 align-items-center">
+                    <div class="review-card-img col-3 pe-0">
                       <img src="./assets/sourabh.png" alt="" />
                     </div>
                     <div class="col-8 ps-0">
-                      <p class="heading mb-0">Sourabh saroha</p>
-                      <p class="sub-heading mb-0"></p>
+                      <p class="heading mb-0 text-start">Sourabh saroha</p>
+                      <p class="sub-heading mb-0 text-start"></p>
                     </div>
                   </div>
                 </div>

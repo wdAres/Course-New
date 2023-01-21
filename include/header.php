@@ -1,3 +1,7 @@
+<?php
+// include '../dashboard/connection.php' ;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,14 +20,14 @@
 </head>
 
 <body class="bg-white">
-    <nav class="navbar navbar-expand-lg py-3 py-sm-0">
+    <nav class="navbar navbar-expand-lg py-sm-0">
         <div class="container">
-            <a class="navbar-brand py-0" href="#"><img src="./assets/Course.so.png" alt="" /></a>
+            <a class="navbar-brand py-0" href="#"><img src="./assets/Logo (2).png" alt="" /></a>
 
             <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button> -->
-            <button class="border-0" style="background: transparent;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="border-0 d-md-none" style="background: transparent;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <!-- <span class=""></span>
                     <span class=""></span>
                     <span class=""></span> -->
@@ -38,11 +42,11 @@
                 </form> -->
                 <ul class="navbar-nav ms-0  mb-0">
                     <li class="nav-item">
-                        <a class="nav-link text-dark underactive" aria-current="page" href="#!" data-bs-toggle="modal" data-bs-target="#exampleModal">Corporate
+                        <a class="nav-link text-dark underactive" aria-current="page" href="#!" data-bs-toggle="modal" data-bs-target="#exampleModal3">Corporate
                             Training</a>
                     </li>
                     <li class="nav-item mx-3">
-                        <a class="nav-link text-dark" href="#!" data-bs-toggle="modal" data-bs-target="#exampleModal">Hire From Us</a>
+                        <a class="nav-link text-dark" href="#!" data-bs-toggle="modal" data-bs-target="#exampleModal2">Hire From Us</a>
                     </li>
                     <!-- <li class="nav-item">
                         <a href="#" class="btn apply-btn px-3 ">Login</a>

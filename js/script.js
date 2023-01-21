@@ -172,7 +172,7 @@ $(document).ready(function(){
   
   
   
-  
+
   
   // $('.project-tabs-one').click(function(){
   //   $('.tab-pane-two, .tab-pane-three').removeClass('active');
